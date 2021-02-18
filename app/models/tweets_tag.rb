@@ -6,7 +6,7 @@ class TweetsTag
   with_options presence: true do
     validates :message
     validates :name
-    validates :content
+    validates :content_required
   end
 
   def save
@@ -16,5 +16,10 @@ class TweetsTag
 
     TweetTagRelation.create(tweet_id: tweet.id, tag_id: tag.id)
   end
+
+  def content_required
+    errors.add(:content, "is required") unless content.body.present?
+  end 
+  
 
 end
