@@ -10,7 +10,7 @@ class TweetsTag
   end
 
   def save
-    tweet = Tweet.create(message: message)
+    tweet = Tweet.create(message: message,content: content)
     tag = Tag.where(name: name).first_or_initialize
     tag.save
 
